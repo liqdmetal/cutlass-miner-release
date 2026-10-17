@@ -1,0 +1,25 @@
+PEARL MINER — LICENSE
+
+This software is provided for the exclusive use of the recipient.
+
+GRANT
+You may use this software to mine Pearl on your own hardware for your own
+benefit.
+
+RESTRICTIONS
+- NO REDISTRIBUTION. You may not copy, share, resell, sublicense, or
+  distribute this software (in whole or in part), including the native
+  binary (pearl_workspace.dll), to any third party.
+- NO REVERSE ENGINEERING. You may not decompile, disassemble, or otherwise
+  derive the source code from the native binary.
+- NO PUBLIC HOSTING. You may not host this software on any public or
+  shared server accessible to parties other than you.
+
+WARRANTY DISCLAIMER
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING
+FROM THE USE OF THIS SOFTWARE.
+
+(c) 2026. All rights reserved.
