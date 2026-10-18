@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="branding/cutlass-miner-lockup-1024.png" alt="Cutlass Miner" width="512">
+</p>
+
 # Pearl Miner — RTX 50-series
 
 High-intensity Pearl (pearlhash) GPU miner for NVIDIA RTX 50-series (sm_120).
@@ -35,3 +39,8 @@ wallet on accepted shares). It is not configurable from `config.json`.
 Provided as-is. Mining consumes significant power and generates heat; monitor
 your GPU. No guarantee of profitability — returns depend on pool difficulty,
 Pearl price, and your electricity cost.
+
+## Branding
+Logo and brand assets live in [`branding/`](branding/) — see
+[`branding/BRAND.md`](branding/BRAND.md) for sizes, usage, and rules.
+Strictly monochrome (black `#000000` / white `#ffffff`), no exceptions.
