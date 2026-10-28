@@ -1,22 +1,26 @@
-# Cutlass Miner on HiveOS, Minerstat, RaveOS & MMPOS
+# Cutlass Miner on HiveOS, Minerstat, RaveOS, MMPOS, SimpleMining OS & MinerOS
 
-Cutlass Miner ships a **custom-miner package** for auto-mining operating
-systems. One tarball works on HiveOS, Minerstat, RaveOS and MMPOS — the
-`h-*` integration files are the HiveOS convention that the others also read.
+Cutlass Miner ships **custom-miner packages** for auto-mining operating
+systems. Two artifacts cover every major rig OS:
 
-## What's in the package
+| artifact | format | OS |
+|---|---|---|
+| `cutlassminer_custom-<ver>.tar.gz` | HiveOS custom-miner tarball | HiveOS, Minerstat, RaveOS, MMPOS |
+| `cutlassminer-<ver>.zip` | SMOS custom-miner zip | SimpleMining OS, MinerOS |
 
-`cutlassminer_custom-<ver>.tar.gz` contains:
+## What's in the packages
+
+Both contain the same core:
 
 | file | purpose |
 |---|---|
 | `pearl-miner` | the closed-source miner (ELF, x86-64, glibc 2.39+) |
 | `runtime/` | native kernels (sm_86 / sm_89 / sm_120) + proof verifier |
-| `h-manifest.conf` | miner metadata (name, version, algo, entrypoints) |
-| `h-config.sh` | writes `config.json` from the OS's wallet/pool/worker env vars |
-| `h-run.sh` | launches the miner with the right flags |
-| `h-stats.sh` | reports hashrate / accepted / rejected / uptime to the dashboard |
 | `config.json` | default config (edit only if not using an auto-mining OS) |
+
+The HiveOS tarball adds the `h-*` integration files (`h-manifest.conf`,
+`h-config.sh`, `h-run.sh`, `h-stats.sh`). The SMOS zip adds a `miner`
+entrypoint that reads `-w` / `-p` / `-n` arguments.
 
 ## HiveOS
 
@@ -65,6 +69,41 @@ systems. One tarball works on HiveOS, Minerstat, RaveOS and MMPOS — the
 1. *MMPOS* → *Miner* → *Custom miner* → *Add*.
 2. Name `cutlassminer`, version `1.4.5`, upload the tarball.
 3. Configure wallet + pool in the miner settings.
+4. Deploy to the rig.
+
+## SimpleMining OS (SMOS)
+
+SMOS custom miners are ZIP packages: a folder named `<name>-<ver>` whose main
+executable is called `miner`. The release ships exactly that layout.
+
+1. Download `cutlassminer-1.4.5.zip` from the release page and host it at a
+   public URL (GitHub release asset, your own server, etc.).
+2. *SimpleMining.net* → *Group Config* → *+ Add Group* → select **CUSTOM**
+   from the miner list.
+3. In **Miner OPTIONS**, put the package URL first, then the wallet/pool/worker
+   arguments:
+   ```
+   https://github.com/liqdmetal/cutlass-miner-release/releases/download/v1.4.5/cutlassminer-1.4.5.zip -w prl1YOURWALLET -p stratum+tcp://prl-us.kryptex.network:7048 -n worker
+   ```
+   - `-w` / `--wallet` — your `prl1...` address (required)
+   - `-p` / `--pool` — pool URL (defaults to `prl-us.kryptex.network:7048`)
+   - `-n` / `--worker` — worker label (defaults to `worker`)
+   - any other arguments are forwarded to the miner
+4. Assign the group to the rig. SMOS downloads the ZIP, extracts it, and runs
+   `miner` with your options.
+
+> The archive filename matters: SMOS caches by filename, so a future update
+> must use a new name (e.g. `cutlassminer-1.4.6.zip`).
+
+## MinerOS
+
+MinerOS accepts the same SMOS-style custom-miner ZIP.
+
+1. *MinerOS* → *Miner management* → *Custom miner* → *Add*.
+2. Name `cutlassminer`, version `1.4.5`; upload or point at
+   `cutlassminer-1.4.5.zip`.
+3. Set the launch arguments the same way as SMOS:
+   `-w prl1YOURWALLET -p stratum+tcp://prl-us.kryptex.network:7048 -n worker`
 4. Deploy to the rig.
 
 ## Requirements on the rig

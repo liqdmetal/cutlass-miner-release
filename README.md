@@ -50,11 +50,13 @@ capped at 128 so two CTAs fit per SM, which is what this build does; it is
 worth roughly +16% on Ampere and +20% on Ada over the previous build, and
 nothing measurable on 50-series (125 registers already).
 
-## Auto-mining OS (HiveOS / Minerstat / RaveOS / MMPOS)
-Cutlass Miner ships a custom-miner package for auto-mining operating systems.
-One tarball (`cutlassminer_custom-<ver>.tar.gz`) works on HiveOS, Minerstat,
-RaveOS and MMPOS — wallet/pool/worker are set in the OS web UI, and the miner
-picks the right kernel for the card automatically.
+## Auto-mining OS (HiveOS / Minerstat / RaveOS / MMPOS / SMOS / MinerOS)
+Cutlass Miner ships custom-miner packages for auto-mining operating systems:
+a HiveOS-style tarball (`cutlassminer_custom-<ver>.tar.gz`) for HiveOS,
+Minerstat, RaveOS and MMPOS, and an SMOS-style zip
+(`cutlassminer-<ver>.zip`) for SimpleMining OS and MinerOS. Wallet/pool/worker
+are set in the OS web UI, and the miner picks the right kernel for the card
+automatically.
 
 Full step-by-step: **[`HIVEOS.md`](HIVEOS.md)**.
 
